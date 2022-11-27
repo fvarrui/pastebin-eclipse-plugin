@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<!-- popup menu action for compilation unit editors (source code editors) -->
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution 
+			id="io.github.fvarrui.eclipse.plugin.pastebin.popup.compilation.unit.editor" 
+			targetID="#CompilationUnitEditorContext"> 
+			<action 
+				id="io.github.fvarrui.eclipse.plugin.pastebin.editor.action1"  
+				label="PasteBin"
+				icon="icons/paste.png"
+				menubarPath="additions"				
+				class="io.github.fvarrui.eclipse.plugin.pastebin.actions.PasteBinAction" /> 			 
+		</viewerContribution>
+	</extension>
+	<!-- popup menu action for text editors -->
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution 
+			id="io.github.fvarrui.eclipse.plugin.pastebin.popup.text.editor" 
+			targetID="#TextEditorContext"> 			
+			<action 
+				id="io.github.fvarrui.eclipse.plugin.pastebin.editor.action2"  
+				label="PasteBin"
+				icon="icons/paste.png"
+				menubarPath="additions"				
+				class="io.github.fvarrui.eclipse.plugin.pastebin.actions.PasteBinAction" /> 			 
+		</viewerContribution>
+	</extension>
+	<!-- sets CTRL+SHIFT+C accelerator for pastebin action -->
+	<!-- NOT WORKING!!! -->
+	<extension point="org.eclipse.ui.bindings">
+		<key sequence="Ctrl+Alt+C"
+			commandId="io.github.fvarrui.eclipse.plugin.pastebin.editor.action1"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" />
+	</extension>
+	<!-- preferences page -->
+ 	<extension point="org.eclipse.ui.preferencePages">
+    	<page
+			class="io.github.fvarrui.eclipse.plugin.pastebin.preferences.PreferencesPage"
+			id="io.github.fvarrui.eclipse.plugin.pastebin.preferences.PreferencesPage"
+			name="PasteBin" />
+	</extension>
+ 	<extension point="org.eclipse.core.runtime.preferences">
+    	<initializer class="io.github.fvarrui.eclipse.plugin.pastebin.preferences.PreferenceInitializer" />
+	</extension>
+</plugin>

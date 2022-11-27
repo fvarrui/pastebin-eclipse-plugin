@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pastebin-eclipse-plugin
+Bundle-SymbolicName: io.github.fvarrui.eclipse.plugin.pastebin;singleton:=true
+Bundle-Version: 0.0.1
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.editors,
+ org.eclipse.jface.text,
+ org.eclipse.ui.ide,
+ org.apache.commons.httpclient;bundle-version="3.1.0"
+Bundle-Vendor: Francisco Vargas Ruiz (https://github.com/fvarrui)
+Automatic-Module-Name: pastebin.eclipse.plugin
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: io.github.fvarrui.eclipse.plugin.pastebin.PluginActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-11
