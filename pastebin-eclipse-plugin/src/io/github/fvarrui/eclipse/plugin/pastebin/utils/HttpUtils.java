@@ -7,17 +7,21 @@ import java.util.Map;
 
 public class HttpUtils {
 
-	public static HttpRequest.BodyPublisher ofFormData(Map<String, Object> data) {
-        var builder = new StringBuilder();
-        for (Map.Entry<String, Object> entry : data.entrySet()) {
-            if (builder.length() > 0) {
-                builder.append("&");
-            }
-            builder.append(URLEncoder.encode(entry.getKey().toString(), StandardCharsets.UTF_8));
-            builder.append("=");
-            builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
-        }
-        return HttpRequest.BodyPublishers.ofString(builder.toString());
+	public static String ofFormData(Map<String, Object> data) {
+	    var builder = new StringBuilder();
+	    for (Map.Entry<String, Object> entry : data.entrySet()) {
+	        if (builder.length() > 0) {
+	            builder.append("&");
+	        }
+	        builder.append(URLEncoder.encode(entry.getKey(), StandardCharsets.UTF_8));
+	        builder.append("=");
+	        builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
+	    }
+	    return builder.toString();
+	}
+	
+	public static HttpRequest.BodyPublisher asBodyPublisher(Map<String, Object> data) {        
+        return HttpRequest.BodyPublishers.ofString(ofFormData(data));
     }
 	
 }
